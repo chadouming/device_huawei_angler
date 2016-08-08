@@ -21,15 +21,22 @@ TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 :=
-TARGET_CPU_VARIANT := cortex-a53
+TARGET_CPU_VARIANT := generic
 
 TARGET_2ND_ARCH := arm
 TARGET_2ND_ARCH_VARIANT := armv7-a-neon
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT := cortex-a7
+TARGET_2ND_CPU_VARIANT := cortex-a53.a57
 
 ENABLE_CPUSETS := true
+
+# Build optimizations
+CLANG_O3 := true
+# STRICT_ALIASING := true
+# KRAIT_TUNINGS := true
+GRAPHITE_OPTS := true
+ENABLE_GCCONLY := true
 
 # Inline kernel building
 TARGET_GCC_VERSION_ARM64 := 5.3-kernel
@@ -123,11 +130,6 @@ TARGET_USES_64_BIT_BINDER := true
 TARGET_USES_AOSP := true
 
 TARGET_USES_INTERACTION_BOOST := true
-
-# Force camera module to be compiled only in 32-bit mode on 64-bit systems
-# Once camera module can run in the native mode of the system (either
-# 32-bit or 64-bit), the following line should be deleted
-BOARD_QTI_CAMERA_32BIT_ONLY := true
 USE_DEVICE_SPECIFIC_CAMERA := true
 
 # Wifi related defines
